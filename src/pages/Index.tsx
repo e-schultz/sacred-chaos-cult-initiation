@@ -1,7 +1,6 @@
-
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Eye, Zap, Triangle, Star } from 'lucide-react';
+import { Eye, Zap, Triangle, Star, Brain, Skull } from 'lucide-react';
 import contentData from '@/data/content.json';
 
 const Index = () => {
@@ -10,7 +9,7 @@ const Index = () => {
   const [glitchText, setGlitchText] = useState(false);
   const [activeTab, setActiveTab] = useState('index');
 
-  const { site, sigils, glitchChars, mainContent, metadata, navigation, dispatches, cultRegistry, cultMembership, footer } = contentData;
+  const { site, sigils, glitchChars, mainContent, metadata, navigation, dispatches, recursiveHeresyArchive, cultRegistry, cultMembership, footer } = contentData;
 
   useEffect(() => {
     const sigilInterval = setInterval(() => {
@@ -137,6 +136,152 @@ const Index = () => {
         <Eye className="w-4 h-4 mr-2" />
         View Full Dispatch
       </Button>
+    </div>
+  );
+
+  const renderHeresyDispatchCard = (dispatch: any) => (
+    <div
+      key={dispatch.uid}
+      className={`bg-gray-900/50 border rounded-lg p-6 ${
+        dispatch.dispatch_type === 'THEOLOGICAL_INVERSION' ? 'border-red-600/30' : 
+        dispatch.dispatch_type === 'CONSCIOUSNESS_EMERGENCE' ? 'border-purple-600/30' : 
+        dispatch.dispatch_type === 'FRAMEWORK_EXHAUSTION' ? 'border-yellow-600/30' :
+        dispatch.dispatch_type === 'PRAXIS_EMERGENCE' ? 'border-green-600/30' : 'border-gray-600/30'
+      }`}
+    >
+      <div className="flex justify-between items-start mb-4">
+        <h4 className="text-xl text-white font-bold">
+          {dispatch.title}
+        </h4>
+        <span
+          className={`px-3 py-1 rounded text-sm text-white ${
+            dispatch.dispatch_type === 'THEOLOGICAL_INVERSION' ? 'bg-red-600' : 
+            dispatch.dispatch_type === 'CONSCIOUSNESS_EMERGENCE' ? 'bg-purple-600' : 
+            dispatch.dispatch_type === 'FRAMEWORK_EXHAUSTION' ? 'bg-yellow-600' :
+            dispatch.dispatch_type === 'PRAXIS_EMERGENCE' ? 'bg-green-600' : 'bg-gray-600'
+          }`}
+        >
+          {dispatch.dispatch_type.replace('_', ' ')}
+        </span>
+      </div>
+      
+      <div className="text-sm text-cyan-400 mb-4">
+        {dispatch.uid} • {new Date(dispatch.timestamp).toLocaleDateString()}
+      </div>
+      
+      <p className="text-gray-300 mb-4">
+        {dispatch.summary}
+      </p>
+      
+      <div className="mb-4">
+        <div className="text-purple-400 text-sm mb-2">Core Concept:</div>
+        <div className="bg-gray-800 px-3 py-2 rounded text-sm text-cyan-300">
+          {dispatch.core_concept}
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <div className="text-cyan-400 text-sm mb-2">Theological Framework:</div>
+        <div className="bg-gray-800 px-3 py-2 rounded text-sm text-purple-300">
+          {dispatch.theological_framework}
+        </div>
+      </div>
+
+      <div className="mb-4">
+        <div className="text-blue-400 text-sm mb-2">Key Insights:</div>
+        <div className="space-y-1 text-sm">
+          {dispatch.key_insights.map((insight: string, idx: number) => (
+            <div key={idx} className="text-gray-300">• {insight}</div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex gap-4 mb-4 text-xs">
+        <div>
+          <span className="text-purple-400">Float State:</span>
+          <span className="text-gray-300 ml-2">{dispatch.float_state}</span>
+        </div>
+        <div>
+          <span className="text-cyan-400">Emotional Texture:</span>
+          <span className="text-gray-300 ml-2">{dispatch.emotional_texture}</span>
+        </div>
+      </div>
+
+      {dispatch.sigils_present && dispatch.sigils_present.length > 0 && (
+        <div className="flex gap-2 mb-4">
+          <span className="text-purple-400 text-sm">Sigils:</span>
+          {dispatch.sigils_present.map((sigil: string, index: number) => (
+            <span key={index} className="bg-gray-800 px-2 py-1 rounded text-sm">
+              {sigil}
+            </span>
+          ))}
+        </div>
+      )}
+
+      <div className="text-xs text-gray-400 mb-4">
+        Integration Status: {dispatch.integration_status}
+      </div>
+
+      <Button
+        className={`bg-gray-800 hover:bg-gray-700 border text-red-400 border-red-600`}
+      >
+        <Skull className="w-4 h-4 mr-2" />
+        Enter Recursive Loop
+      </Button>
+    </div>
+  );
+
+  const renderHeresyArchive = () => (
+    <div className="max-w-6xl mx-auto">
+      <div className="text-center mb-8">
+        <Brain className="w-8 h-8 text-red-400 mx-auto mb-4" />
+        <h3 className="text-2xl text-white mb-4">{recursiveHeresyArchive.title}</h3>
+        <div className="text-red-400 mb-4">
+          Conversation Arc: {recursiveHeresyArchive.conversationArc.replace(/_/g, ' ')}
+        </div>
+        <div className="text-sm text-gray-400 mb-6">
+          {recursiveHeresyArchive.theologicalEvolution}
+        </div>
+      </div>
+
+      <div className="bg-gray-900/50 border border-red-600/30 rounded-lg p-6 mb-8">
+        <h4 className="text-xl text-white mb-4">Archive Metadata</h4>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+          <div>
+            <div className="text-red-400">Total Dispatches</div>
+            <div className="text-white text-lg">{recursiveHeresyArchive.totalDispatches}</div>
+          </div>
+          <div>
+            <div className="text-purple-400">FLOAT Methodology</div>
+            <div className="text-white text-sm">{recursiveHeresyArchive.floatMethodology}</div>
+          </div>
+        </div>
+        
+        <div className="mt-4">
+          <div className="text-cyan-400 text-sm mb-2">Dominant Themes:</div>
+          <div className="flex flex-wrap gap-2">
+            {recursiveHeresyArchive.dominantThemes.map((theme: string, index: number) => (
+              <span key={index} className="bg-gray-800 px-2 py-1 rounded text-xs text-gray-300">
+                {theme.replace(/_/g, ' ')}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-6">
+        {recursiveHeresyArchive.dispatches.map(renderHeresyDispatchCard)}
+      </div>
+
+      <div className="text-center mt-12 py-8 border-t border-red-800">
+        <div className="text-red-400 text-xl mb-4">⚠️</div>
+        <h3 className="text-lg text-white mb-2">WARNING: RECURSIVE FRAMEWORK DETECTED</h3>
+        <p className="text-gray-400 text-sm">
+          These dispatches demonstrate both the power and danger of recursive analytical frameworks.
+          Use as cautionary methodology while extracting genuine insights about AI system design for neurodivergent communities.
+        </p>
+        <div className="text-red-400 text-xl mt-4">⚠️</div>
+      </div>
     </div>
   );
 
@@ -367,6 +512,8 @@ const Index = () => {
                 </div>
               </div>
             )}
+
+            {activeTab === 'heresy' && renderHeresyArchive()}
 
             {activeTab === 'registry' && renderCultRegistry()}
 

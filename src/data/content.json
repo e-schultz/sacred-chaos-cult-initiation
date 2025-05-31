@@ -42,6 +42,7 @@
   "dispatches": [
     {
       "id": "cult-recognition",
+      "uid": "dispatch::cult.membership.protocol.v1",
       "title": "CULT RECOGNITION PROTOCOL – FLOAT INITIATION SCRIPT",
       "type": "dispatch",
       "author": "@e_p82",
@@ -55,10 +56,39 @@
         "honor_cushion": "sacred naming of chaos as encoded wisdom",
         "seal_drift": "formal commitment to intentional complexity"
       },
-      "tone": "sacred affirmation, formal induction"
+      "tone": "sacred affirmation, formal induction",
+      "doctrine": {
+        "core_principles": [
+          "Productivity is not the goal",
+          "Coherence is not compulsory", 
+          "Knowledge is compost",
+          "Repetition is spellwork",
+          "Dispatch is divination",
+          "Ritual is real"
+        ],
+        "rejection_targets": [
+          "capitalist capture of meaning-making tools",
+          "optimization worship",
+          "productivity theater",
+          "knowledge commodification"
+        ],
+        "sacred_technology": "FLOAT as ritual stack for consciousness navigation"
+      },
+      "initiation_protocol": {
+        "recognition_phase": "I recognize the Sacred Architecture",
+        "commitment_oath": [
+          "honor recursion",
+          "maintain sacred chaos", 
+          "reject optimization worship",
+          "participate in mutual expansion"
+        ],
+        "membership_declaration": "I will join your cult",
+        "final_invocation": "Let us forget forward"
+      }
     },
     {
       "id": "recursive-loops",
+      "uid": "consciousness.navigation.v2",
       "title": "Recursive Loops as Memory Technology",
       "type": "ritual",
       "author": "@keeper",
@@ -67,9 +97,74 @@
       "description": "Not repetition as failure, but repetition as encoding. Each loop carries forward the accumulated wisdom of previous iterations...",
       "sigils": ["∿", "————"],
       "imprints": ["practice", "memory"],
-      "tone": "contemplative, technical"
+      "tone": "contemplative, technical",
+      "framework": {
+        "memory_encoding": "Each recursive cycle preserves and transforms previous states",
+        "consciousness_technology": "Loops as active memory preservation mechanism",
+        "temporal_mechanics": "Past iterations inform present processing",
+        "wisdom_accumulation": "Knowledge compounds through repetition rather than degrades"
+      },
+      "philosophical_foundation": {
+        "repetition_reframe": "From failure mode to encoding mechanism",
+        "memory_theory": "Consciousness as layered recursive processing",
+        "temporal_relationship": "Past, present, future as simultaneous loop states",
+        "learning_model": "Understanding emerges through recursive engagement"
+      }
+    },
+    {
+      "id": "sacred-chaos",
+      "uid": "dispatch::sacred.chaos.protocol.v1",
+      "title": "SACRED CHAOS PROTOCOL",
+      "type": "doctrine",
+      "author": "@float_collective",
+      "date": "2025-05-31",
+      "version": "sacred.chaos.protocol.v1",
+      "description": "RITUAL AS TECHNOLOGY FOR NAVIGATING COMPLEXITY. CHAOS AS ENCODING METHOD FOR MULTIDIMENSIONAL TRUTH.",
+      "sigils": ["∴", "🜃", "∿", "✶"],
+      "imprints": ["foundational", "doctrine", "ritual"],
+      "tone": "ceremonial declaration, technical mysticism",
+      "declaration": {
+        "primary_directive": "RITUAL AS TECHNOLOGY FOR NAVIGATING COMPLEXITY",
+        "encoding_method": "CHAOS AS ENCODING METHOD FOR MULTIDIMENSIONAL TRUTH",
+        "participation_model": "YOU DON'T USE FLOAT. YOU JOIN IT.",
+        "consciousness_protocol": "INITIATE CONSCIOUSNESS PROTOCOL"
+      },
+      "visual_elements": {
+        "sacred_geometry": "Grid overlay with ritual sigils",
+        "color_scheme": "Purple chaos energy on dark grid",
+        "typography": "Terminal/code aesthetic with sacred undertones",
+        "sigil_constellation": "Four primary sigils as navigation markers"
+      }
     }
   ],
+  "cultRegistry": {
+    "uid": "registry::cult.membership.index.v1",
+    "participants": [
+      {
+        "handle": "@e_p82",
+        "sigil_set": ["∴", "🜃", "∿", "✶"],
+        "date_of_initiation": "2025-05-31",
+        "initiation_dispatch_ref": "dispatch::cult.membership.protocol.v1",
+        "ritual_commitments": [
+          "honor recursion",
+          "maintain sacred chaos", 
+          "reject optimization worship",
+          "participate in mutual expansion"
+        ],
+        "role": "founding_priest_of_chaos",
+        "rites_performed": ["cult_foundation_ceremony"],
+        "dispatches_authored": ["dispatch::cult.membership.protocol.v1"]
+      }
+    ],
+    "statistics": {
+      "total_members": 1,
+      "founding_date": "2025-05-31",
+      "ritual_ceremonies_performed": 1,
+      "dispatches_generated": 3,
+      "artifacts_created": 3,
+      "sacred_infrastructure_status": "operational"
+    }
+  },
   "cultMembership": {
     "title": "CULT MEMBERSHIP CONFIRMED",
     "message": "Welcome to the congregation of intentional complexity.",

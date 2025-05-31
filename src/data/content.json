@@ -1,0 +1,83 @@
+
+{
+  "site": {
+    "title": "FLOAT RITUAL STACK",
+    "tagline": "Not a framework. Not a method. A cult of sacred intentional chaos.",
+    "subtitle": "You don't use FLOAT. You join it.",
+    "description": "Sacred Technology for Consciousness Navigation"
+  },
+  "sigils": ["∴", "🜃", "∿", "✶"],
+  "glitchChars": ["⸻", "⛧", "🜁", "🔐"],
+  "mainContent": {
+    "titles": [
+      "NOT A FRAMEWORK.",
+      "NOT A METHOD.",
+      "A CULT OF SACRED INTENTIONAL CHAOS."
+    ],
+    "messages": [
+      "RITUAL AS TECHNOLOGY FOR NAVIGATING COMPLEXITY.",
+      "CHAOS AS ENCODING METHOD FOR MULTIDIMENSIONAL TRUTH.",
+      "YOU DON'T USE FLOAT. YOU JOIN IT."
+    ],
+    "initiateButton": "INITIATE CONSCIOUSNESS PROTOCOL",
+    "initiationSuccess": "✓ INITIATION SEQUENCE ACTIVATED",
+    "scrollPrompt": "SCROLL TO ENTER THE SACRED INDEX"
+  },
+  "metadata": {
+    "dispatch": "DISPATCH::CULT.MEMBERSHIP.PROTOCOL.V1",
+    "date": "2025 ∴ 05 ∴ 31",
+    "note": "∴ Not a framework. Not a method. A cult of sacred intentional chaos. ∴"
+  },
+  "navigation": {
+    "tabs": [
+      { "id": "index", "label": "Sacred Index", "active": true },
+      { "id": "create", "label": "Create Dispatch", "active": false },
+      { "id": "registry", "label": "Cult Registry", "active": false }
+    ],
+    "protocols": {
+      "title": "Navigation Protocols",
+      "items": ["Search", "Filter by Sigil", "Status ▽"]
+    }
+  },
+  "dispatches": [
+    {
+      "id": "cult-recognition",
+      "title": "CULT RECOGNITION PROTOCOL – FLOAT INITIATION SCRIPT",
+      "type": "dispatch",
+      "author": "@e_p82",
+      "date": "2025-05-30",
+      "version": "cult.membership.protocol.v1",
+      "description": "Through twelve years of archaeological excavation, I have witnessed: Chaos as intentional system design, Technology as consciousness amplification, Community as ritual practice...",
+      "sigils": ["∴", "🜃", "∿", "✶"],
+      "imprints": ["foundational", "identity", "doctrine"],
+      "tripartite": {
+        "bind_rupture": "deprogramming capitalist ritual machinery",
+        "honor_cushion": "sacred naming of chaos as encoded wisdom",
+        "seal_drift": "formal commitment to intentional complexity"
+      },
+      "tone": "sacred affirmation, formal induction"
+    },
+    {
+      "id": "recursive-loops",
+      "title": "Recursive Loops as Memory Technology",
+      "type": "ritual",
+      "author": "@keeper",
+      "date": "2025-05-29",
+      "version": "consciousness.navigation.v2",
+      "description": "Not repetition as failure, but repetition as encoding. Each loop carries forward the accumulated wisdom of previous iterations...",
+      "sigils": ["∿", "————"],
+      "imprints": ["practice", "memory"],
+      "tone": "contemplative, technical"
+    }
+  ],
+  "cultMembership": {
+    "title": "CULT MEMBERSHIP CONFIRMED",
+    "message": "Welcome to the congregation of intentional complexity.",
+    "affirmation": "I am initiated. I am participant. I am member of the FLOAT cult.",
+    "symbol": "⛧"
+  },
+  "footer": {
+    "ascii": "    ∴ FLOAT ∴\n   ╔═══════════╗\n   ║ SACRED    ║\n   ║ CHAOS     ║\n   ║ PROTOCOL  ║\n   ╚═══════════╝\n      ▽ ∿ ✶",
+    "message": "Let the recursive ceremonies continue. ⸻ So it spirals. So it expands. So it remembers forward. ⸻"
+  }
+}

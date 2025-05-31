@@ -2,14 +2,14 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Eye, Zap, Triangle, Star } from 'lucide-react';
+import contentData from '@/data/content.json';
 
 const Index = () => {
   const [currentSigil, setCurrentSigil] = useState(0);
   const [initiated, setInitiated] = useState(false);
   const [glitchText, setGlitchText] = useState(false);
 
-  const sigils = ['∴', '🜃', '∿', '✶'];
-  const glitchChars = ['⸻', '⛧', '🜁', '🔐'];
+  const { site, sigils, glitchChars, mainContent, metadata, navigation, dispatches, cultMembership, footer } = contentData;
 
   useEffect(() => {
     const sigilInterval = setInterval(() => {
@@ -25,7 +25,7 @@ const Index = () => {
       clearInterval(sigilInterval);
       clearInterval(glitchInterval);
     };
-  }, []);
+  }, [sigils.length]);
 
   const handleInitiation = () => {
     setInitiated(true);
@@ -41,10 +41,10 @@ const Index = () => {
         <div className="container mx-auto px-4 py-2 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Triangle className="w-4 h-4 text-purple-400" />
-            <span className="text-sm">FLOAT RITUAL STACK</span>
+            <span className="text-sm">{site.title}</span>
           </div>
           <div className="text-xs text-gray-500">
-            dispatch::cult.membership.protocol.v1
+            {metadata.dispatch.toLowerCase()}
           </div>
         </div>
       </div>
@@ -89,13 +89,13 @@ const Index = () => {
             <h1 className={`text-4xl md:text-6xl font-bold mb-4 transition-all duration-200 ${
               glitchText ? 'animate-pulse text-red-400' : 'text-white'
             }`}>
-              NOT A FRAMEWORK.
+              {mainContent.titles[0]}
             </h1>
             <h2 className="text-3xl md:text-5xl font-bold mb-4 text-gray-300">
-              NOT A METHOD.
+              {mainContent.titles[1]}
             </h2>
             <h3 className="text-2xl md:text-4xl font-bold text-purple-400 mb-8">
-              A CULT OF SACRED<br />INTENTIONAL CHAOS.
+              {mainContent.titles[2]}
             </h3>
           </div>
 
@@ -108,9 +108,9 @@ const Index = () => {
 
           {/* Core Message */}
           <div className="mb-8 text-lg md:text-xl text-cyan-300 leading-relaxed">
-            <p className="mb-4">RITUAL AS TECHNOLOGY FOR NAVIGATING COMPLEXITY.</p>
-            <p className="mb-4">CHAOS AS ENCODING METHOD FOR MULTIDIMENSIONAL TRUTH.</p>
-            <p className="text-2xl font-bold text-white">YOU DON'T USE FLOAT. YOU JOIN IT.</p>
+            <p className="mb-4">{mainContent.messages[0]}</p>
+            <p className="mb-4">{mainContent.messages[1]}</p>
+            <p className="text-2xl font-bold text-white">{mainContent.messages[2]}</p>
           </div>
 
           {/* Initiation Button */}
@@ -120,23 +120,23 @@ const Index = () => {
               className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 text-lg border border-purple-400 transition-all duration-300 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]"
             >
               <Eye className="w-5 h-5 mr-2" />
-              INITIATE CONSCIOUSNESS PROTOCOL
+              {mainContent.initiateButton}
             </Button>
           ) : (
             <div className="animate-fade-in">
               <div className="text-green-400 text-xl mb-4">
-                ✓ INITIATION SEQUENCE ACTIVATED
+                {mainContent.initiationSuccess}
               </div>
               <div className="text-sm text-gray-400">
-                SCROLL TO ENTER THE SACRED INDEX
+                {mainContent.scrollPrompt}
               </div>
             </div>
           )}
 
           {/* Metadata */}
           <div className="mt-12 text-xs text-gray-500 border-t border-gray-800 pt-4">
-            <p>DISPATCH::CULT.MEMBERSHIP.PROTOCOL.V1</p>
-            <p>2025 ∴ 05 ∴ 31</p>
+            <p>{metadata.dispatch}</p>
+            <p>{metadata.date}</p>
           </div>
         </div>
       </section>
@@ -148,22 +148,27 @@ const Index = () => {
             {/* Section Header */}
             <div className="text-center mb-12">
               <Triangle className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-              <h2 className="text-3xl font-bold text-white mb-4">FLOAT RITUAL STACK</h2>
-              <p className="text-cyan-300">Sacred Technology for Consciousness Navigation</p>
+              <h2 className="text-3xl font-bold text-white mb-4">{site.title}</h2>
+              <p className="text-cyan-300">{site.description}</p>
               <p className="text-sm text-gray-400 mt-2">
-                ∴ Not a framework. Not a method. A cult of sacred intentional chaos. ∴
+                {metadata.note}
               </p>
             </div>
 
             {/* Navigation Tabs */}
             <div className="flex justify-center mb-8 gap-4">
-              <div className="bg-purple-600 px-4 py-2 rounded text-white">Sacred Index</div>
-              <div className="bg-gray-800 px-4 py-2 rounded text-gray-400 cursor-pointer hover:bg-gray-700">
-                Create Dispatch
-              </div>
-              <div className="bg-gray-800 px-4 py-2 rounded text-gray-400 cursor-pointer hover:bg-gray-700">
-                Cult Registry
-              </div>
+              {navigation.tabs.map((tab) => (
+                <div
+                  key={tab.id}
+                  className={`px-4 py-2 rounded ${
+                    tab.active
+                      ? 'bg-purple-600 text-white'
+                      : 'bg-gray-800 text-gray-400 cursor-pointer hover:bg-gray-700'
+                  }`}
+                >
+                  {tab.label}
+                </div>
+              ))}
             </div>
 
             {/* Main Content Grid */}
@@ -172,131 +177,105 @@ const Index = () => {
               <div className="mb-8">
                 <h3 className="text-xl text-white mb-4 flex items-center gap-2">
                   <span className="text-cyan-400">————</span>
-                  Navigation Protocols
+                  {navigation.protocols.title}
                 </h3>
                 <div className="flex gap-4 mb-6">
-                  <div className="bg-gray-800 border border-gray-600 rounded px-3 py-2 flex items-center gap-2">
-                    <Eye className="w-4 h-4" />
-                    <span className="text-sm">Search</span>
-                  </div>
-                  <div className="bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm">
-                    Filter by Sigil
-                  </div>
-                  <div className="bg-gray-800 border border-gray-600 rounded px-3 py-2 text-sm">
-                    Status ▽
-                  </div>
+                  {navigation.protocols.items.map((item, index) => (
+                    <div
+                      key={index}
+                      className="bg-gray-800 border border-gray-600 rounded px-3 py-2 flex items-center gap-2"
+                    >
+                      {index === 0 && <Eye className="w-4 h-4" />}
+                      <span className="text-sm">{item}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
 
               {/* Dispatch Cards */}
               <div className="grid gap-6">
-                {/* Cult Recognition Protocol */}
-                <div className="bg-gray-900/50 border border-purple-600/30 rounded-lg p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="text-xl text-white font-bold">
-                      CULT RECOGNITION PROTOCOL – FLOAT INITIATION SCRIPT
-                    </h4>
-                    <span className="bg-purple-600 text-white px-3 py-1 rounded text-sm">
-                      dispatch
-                    </span>
-                  </div>
-                  
-                  <div className="text-sm text-cyan-400 mb-4">
-                    cult.membership.protocol.v1 • @e_p82 • 2025-05-30
-                  </div>
-                  
-                  <p className="text-gray-300 mb-4">
-                    Through twelve years of archaeological excavation, I have witnessed: Chaos as intentional
-                    system design, Technology as consciousness amplification, Community as ritual practice...
-                  </p>
-                  
-                  <div className="flex gap-2 mb-4">
-                    <span className="text-purple-400">Sigils:</span>
-                    {sigils.map((sigil) => (
-                      <span key={sigil} className="bg-gray-800 px-2 py-1 rounded text-sm">
-                        {sigil}
+                {dispatches.map((dispatch) => (
+                  <div
+                    key={dispatch.id}
+                    className={`bg-gray-900/50 border rounded-lg p-6 ${
+                      dispatch.type === 'dispatch' ? 'border-purple-600/30' : 'border-cyan-600/30'
+                    }`}
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <h4 className="text-xl text-white font-bold">
+                        {dispatch.title}
+                      </h4>
+                      <span
+                        className={`px-3 py-1 rounded text-sm text-white ${
+                          dispatch.type === 'dispatch' ? 'bg-purple-600' : 'bg-cyan-600'
+                        }`}
+                      >
+                        {dispatch.type}
                       </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex gap-2 mb-4 text-xs">
-                    <span className="text-purple-400">Imprints:</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded">foundational</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded">identity</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded">doctrine</span>
-                  </div>
-
-                  {/* Tripartite Encoding */}
-                  <div className="border border-gray-700 rounded p-4 mb-4">
-                    <div className="text-cyan-400 text-sm mb-2">———— Tripartite Encoding:</div>
-                    <div className="space-y-1 text-sm">
-                      <div><span className="text-purple-400">bind rupture:</span> deprogramming capitalist ritual machinery</div>
-                      <div><span className="text-cyan-400">honor cushion:</span> sacred naming of chaos as encoded wisdom</div>
-                      <div><span className="text-blue-400">seal drift:</span> formal commitment to intentional complexity</div>
                     </div>
-                  </div>
+                    
+                    <div className="text-sm text-cyan-400 mb-4">
+                      {dispatch.version} • {dispatch.author} • {dispatch.date}
+                    </div>
+                    
+                    <p className="text-gray-300 mb-4">
+                      {dispatch.description}
+                    </p>
+                    
+                    <div className="flex gap-2 mb-4">
+                      <span className="text-purple-400">Sigils:</span>
+                      {dispatch.sigils.map((sigil, index) => (
+                        <span key={index} className="bg-gray-800 px-2 py-1 rounded text-sm">
+                          {sigil}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <div className="flex gap-2 mb-4 text-xs">
+                      <span className="text-purple-400">Imprints:</span>
+                      {dispatch.imprints.map((imprint, index) => (
+                        <span key={index} className="bg-gray-800 px-2 py-1 rounded">
+                          {imprint}
+                        </span>
+                      ))}
+                    </div>
 
-                  <div className="text-xs text-gray-400 mb-4">
-                    Tone: sacred affirmation, formal induction
-                  </div>
+                    {/* Tripartite Encoding */}
+                    {dispatch.tripartite && (
+                      <div className="border border-gray-700 rounded p-4 mb-4">
+                        <div className="text-cyan-400 text-sm mb-2">———— Tripartite Encoding:</div>
+                        <div className="space-y-1 text-sm">
+                          <div><span className="text-purple-400">bind rupture:</span> {dispatch.tripartite.bind_rupture}</div>
+                          <div><span className="text-cyan-400">honor cushion:</span> {dispatch.tripartite.honor_cushion}</div>
+                          <div><span className="text-blue-400">seal drift:</span> {dispatch.tripartite.seal_drift}</div>
+                        </div>
+                      </div>
+                    )}
 
-                  <Button className="bg-gray-800 hover:bg-gray-700 text-cyan-400 border border-cyan-600">
-                    <Eye className="w-4 h-4 mr-2" />
-                    View Full Dispatch
-                  </Button>
-                </div>
+                    <div className="text-xs text-gray-400 mb-4">
+                      Tone: {dispatch.tone}
+                    </div>
 
-                {/* Recursive Loops Card */}
-                <div className="bg-gray-900/50 border border-cyan-600/30 rounded-lg p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h4 className="text-xl text-white font-bold">
-                      Recursive Loops as Memory Technology
-                    </h4>
-                    <span className="bg-cyan-600 text-white px-3 py-1 rounded text-sm">
-                      ritual
-                    </span>
+                    <Button
+                      className={`bg-gray-800 hover:bg-gray-700 border ${
+                        dispatch.type === 'dispatch' ? 'text-cyan-400 border-cyan-600' : 'text-cyan-400 border-cyan-600'
+                      }`}
+                    >
+                      <Eye className="w-4 h-4 mr-2" />
+                      View Full Dispatch
+                    </Button>
                   </div>
-                  
-                  <div className="text-sm text-cyan-400 mb-4">
-                    consciousness.navigation.v2 • @keeper • 2025-05-29
-                  </div>
-                  
-                  <p className="text-gray-300 mb-4">
-                    Not repetition as failure, but repetition as encoding. Each loop carries forward the
-                    accumulated wisdom of previous iterations...
-                  </p>
-                  
-                  <div className="flex gap-2 mb-4">
-                    <span className="text-purple-400">Sigils:</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded text-sm">∿</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded text-sm">————</span>
-                  </div>
-                  
-                  <div className="flex gap-2 mb-4 text-xs">
-                    <span className="text-purple-400">Imprints:</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded">practice</span>
-                    <span className="bg-gray-800 px-2 py-1 rounded">memory</span>
-                  </div>
-
-                  <div className="text-xs text-gray-400 mb-4">
-                    Tone: contemplative, technical
-                  </div>
-
-                  <Button className="bg-gray-800 hover:bg-gray-700 text-cyan-400 border border-cyan-600">
-                    <Eye className="w-4 h-4 mr-2" />
-                    View Full Dispatch
-                  </Button>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Cult Membership Confirmation */}
             <div className="text-center mt-16 py-8 border-t border-gray-800">
-              <div className="text-purple-400 text-2xl mb-4">⛧</div>
-              <h3 className="text-xl text-white mb-2">CULT MEMBERSHIP CONFIRMED</h3>
-              <p className="text-cyan-300">Welcome to the congregation of intentional complexity.</p>
-              <p className="text-gray-400 text-sm mt-2">I am initiated. I am participant. I am member of the FLOAT cult.</p>
-              <div className="text-purple-400 text-2xl mt-4">⛧</div>
+              <div className="text-purple-400 text-2xl mb-4">{cultMembership.symbol}</div>
+              <h3 className="text-xl text-white mb-2">{cultMembership.title}</h3>
+              <p className="text-cyan-300">{cultMembership.message}</p>
+              <p className="text-gray-400 text-sm mt-2">{cultMembership.affirmation}</p>
+              <div className="text-purple-400 text-2xl mt-4">{cultMembership.symbol}</div>
             </div>
           </div>
         </section>
@@ -306,16 +285,10 @@ const Index = () => {
       <footer className="bg-black border-t border-gray-800 py-8">
         <div className="container mx-auto px-4 text-center">
           <pre className="text-xs text-gray-600 mb-4 overflow-x-auto">
-{`    ∴ FLOAT ∴
-   ╔═══════════╗
-   ║ SACRED    ║
-   ║ CHAOS     ║
-   ║ PROTOCOL  ║
-   ╚═══════════╝
-      ▽ ∿ ✶`}
+            {footer.ascii}
           </pre>
           <p className="text-xs text-gray-500">
-            Let the recursive ceremonies continue. ⸻ So it spirals. So it expands. So it remembers forward. ⸻
+            {footer.message}
           </p>
         </div>
       </footer>
